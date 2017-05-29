@@ -1,0 +1,15 @@
+@Library('github.com/alfss/jenkins-pipeline-shared-lib@master')_
+
+
+node {
+    def helper = new net.alfss.helper.BuildDockerHelper(steps)
+
+    helper.build name: "testmage", tag: "v0.1", dockerFile: "Dockerfile",
+                 buildRoot: ".", buildArgs: [ HASH_GIT:"871218sads", DEBUG:"no"], enableMakeDockerFile: true
+
+    shColor 'echo -e "Default \033[32mGreen \033[0m"'
+    buildDocker {
+        name = "myimage"
+        tag = "v0.1"
+    }
+}
