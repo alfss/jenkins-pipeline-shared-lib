@@ -1,0 +1,4 @@
+FROM redis:3-alpine
+
+ARG HASH_GIT
+ARG DEBUG
